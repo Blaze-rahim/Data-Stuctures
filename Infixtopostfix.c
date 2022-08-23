@@ -24,14 +24,15 @@ char pop(){
 
 int priority(char x){
     if(x =='(') return 0;
-    if(x == '+' || x == '-' ) return 1;
-    if(x == '*' || x == '/') return 2;
+    if(x == '^') return 1;
+    if(x == '+' || x == '-' ) return 2;
+    if(x == '*' || x == '/') return 3;
     return 0;
 }
 
 int main(){
     char x;
-    char input[] = "A-((B*C)/D)+G/F";
+    char input[] = "A-B+C*((D(E+F)-G^H)+I*J/L)M*P^Q";
     int i;
     for(i = 0; i<strlen(input);i++){
         if(isalpha(input[i])) printf("%c", input[i]); //isalpha is inbuilt funtion to check weather a char is alphabet or not.
