@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include<ctype.h>
+#include<string.h>
+#define max 5
+char stack[max];
+int top = -1;
+
+void push(char c){
+    if(top<max){
+        top++;
+        stack[top] = c;
+    }
+    else printf("Overflow");
+}
+
+char pop(){
+    if(top != -1){
+        char x = stack[top];
+        top--;
+        return x;
+    }
+    else return 0;
+}
+
+int priority(char x){
+    if(x =='(') return 0;
+    if(x == '+' || x == '-' ) return 1;
+    if(x == '*' || x == '/') return 2;
+    return 0;
+}
+
+int main(){
+    char x;
+    char input[] = "A-((B*C)/D)+G/F";
+    int i;
+    for(i = 0; i<strlen(input);i++){
+        if(isalpha(input[i])) printf("%c", input[i]); //isalpha is inbuilt funtion to check weather a char is alphabet or not.
+            
+        else if (input[i] == '(')
+            push(input[i]);
+        
+        else if (input[i] == ')')
+            while((x = pop()) != '(') printf("%c ", x);
+        
+        else{
+            while(priority(input[i]) <= priority(stack[top])) printf("%c", pop());
+            push(input[i]);
+        }
+    }
+    while(top != -1) printf("%c", pop());
+    return 0;
+}
