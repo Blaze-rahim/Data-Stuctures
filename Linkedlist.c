@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<conio.h>
+
 #include<stdlib.h>
 
 struct node{
@@ -8,20 +8,24 @@ struct node{
 };
 
 struct node *head;
-int choice = 0;
 
 void startinsert(){
+	struct node *ptr;
 	int var;
-	struct node *ptr = (struct node*) malloc(sizeof(struct node));
-	if(ptr=NULL)printf("Overflow!");
+
+	ptr = (struct node*) malloc(sizeof(struct node *));
+	if(ptr==NULL) printf("Overflow!");
  
 	else{
-		printf("Enter value");
-		scanf("%d", &var);
+		printf("Enter value : ");
+		scanf("%D", &var );
+
 		ptr -> data = var;
 		ptr -> next = head;
 		head = ptr;
+		 
 	}
+
 }
 
 void endinsert(){
@@ -48,7 +52,69 @@ void endinsert(){
 	}
 }
 
-void locationinsert(){
+void afterinsert(){
+	int var, num;
+	struct node *ptr, *temp;
+	ptr = (struct node*) malloc(sizeof(struct node));
+	if(ptr==NULL)printf("Overflow!");
+ 
+	else{
+		printf("Enter value to insert");
+		scanf("%d", &var);
+
+		printf("Which value you wanna insert in?");
+		scanf("%d", &num);
+
+		ptr -> data = var;
+		if(head == NULL){
+			ptr -> next = NULL;
+			head = ptr;
+		}
+		else{
+			temp = head;
+			while(temp -> data != num){
+				temp = temp -> next;
+			}
+			
+			ptr -> next = temp -> next;
+			temp -> next = ptr;
+		}
+	}
+}
+
+
+void beforeinsert(){
+	int var, num;
+	struct node *ptr, *temp;
+	ptr = (struct node*) malloc(sizeof(struct node));
+	if(ptr==NULL)printf("Overflow!");
+ 
+	else{
+		printf("Enter value to insert");
+		scanf("%d", &var);
+
+		printf("Which value you wanna insert in?");
+		scanf("%d", &num);
+
+		ptr -> data = var;
+		if(head == NULL){
+			ptr -> next = NULL;
+			head = ptr;
+		}
+		else{
+			temp = head;
+			while(temp -> data != num){
+				temp = temp -> next;
+			}
+			
+			ptr -> next = temp -> next;
+			temp -> next = ptr;
+		}
+	}
+}
+
+
+void locationinsert(){ //THIS ISNT IN syllabus!
 	int i, location, num;
 	struct node *ptr, *temp;
 	ptr = (struct node*)malloc(sizeof(struct node));
@@ -77,6 +143,38 @@ void locationinsert(){
 
 	}
 }
+
+void begindelete(){
+	struct node *ptr;
+	if (head == NULL) printf("Underflow");
+
+	else{
+		ptr = head;
+		head = ptr -> next;
+		free(ptr);
+	}
+
+}
+
+void enddelete(){
+	struct node *ptr, *temp;
+	if (head == NULL) printf("Underflow");
+
+	else if(head -> next == NULL){
+		head = NULL;
+		free(head);
+	}
+	else{
+		ptr = head;
+		while(ptr -> next != NULL){
+			temp = ptr;
+			ptr = ptr->next;
+		}
+		temp -> next = NULL;
+		free(ptr);
+	}
+}
+
 void display(){
 	struct node *ptr;
 	ptr = head;
@@ -91,13 +189,12 @@ void display(){
  }
 
 int main(){
-    while(choice != 5)  
-    {  
-        printf("\n1.Start Insert\n2.End Insert\n3.Location Insert\n4.Display\n5.Exit");  
+	int choice = 0;
+    while(choice != 6){  
+        printf("\n1.Start Insert\n2.End Insert\n3.Afterinsert\n4.Location Insert\n5.Display\n6.Exit");  
         printf("\n Enter your choice \n");        
         scanf("%d",&choice);  
-        switch(choice)  
-        {  
+        switch(choice){  
             case 1:     
                 startinsert();  
                 break;  
@@ -105,16 +202,20 @@ int main(){
             case 2:    
                 endinsert();  
                 break;  
+
+			case 3:
+				afterinsert();
+				break;
             
-            case 3:    
+            case 4:    
                 locationinsert();  
                 break;  
 
-            case 4:     
+            case 5:     
                 display();  
                 break;   
               
-			case 5:
+			case 6:
 				printf("Exiting....");  
                 break;
 			
