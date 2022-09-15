@@ -51,3 +51,8 @@ int main(){
     while(top != -1) printf("%c", pop());
     return 0;
 }
+
+// Output
+// PS C:\Users\AbdulRahim\Desktop\Data-Stuctures> gcc .\Infixtopostfix.c
+// PS C:\Users\AbdulRahim\Desktop\Data-Stuctures> .\a.exe
+// AB-CDEF+ G-H^ IJ*L/ + M*P*+Q^

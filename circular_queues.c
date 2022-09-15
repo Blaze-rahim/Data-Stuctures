@@ -5,7 +5,7 @@ int front = -1, rear = -1, cqueue[max];
 void insert(){
     int val;
     if ((rear == max - 1 && front == 0) || (rear == front - 1))
-        printf("Overflow");
+        printf("Overflow\n");
     if (front == -1 && rear == -1)
         front = rear = 0;
     else if (rear == -1 && front != 0)
@@ -20,7 +20,7 @@ void insert(){
 
 void deletion(){
     if (front == -1){
-        printf("Underflow");
+        printf("Underflow\n");
         return;
     }
     printf("Element deleted is : %d\n", cqueue[front]);
@@ -66,7 +66,7 @@ void display(){
 int main(){
     int choice, item;
     do{
-        printf("1.Insert\n");
+        printf("\n1.Insert\n");
         printf("2.Delete\n");
         printf("3.Display\n");
         printf("4.Quit\n");
@@ -92,3 +92,85 @@ int main(){
     
     return 0;
 }
+
+// Output
+
+// PS C:\Users\AbdulRahim\Desktop\Data-Stuctures> gcc .\circular_queues.c   
+// PS C:\Users\AbdulRahim\Desktop\Data-Stuctures> .\a.exe
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 1
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 1
+// Enter : 12
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 1
+// Enter : 15
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 1
+// Enter : 1
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 1
+// Enter : 54
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 1
+// Overflow
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 3
+// Elements :
+// 0 12 15 1 54 3 
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 2
+// Element deleted is : 0
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 2
+// Element deleted is : 12
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 2
+// Element deleted is : 15
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 2
+// Element deleted is : 1
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 2
+// Element deleted is : 54
+// 1.Insert
+// 2.Delete
+// 3.Display
+// 4.Quit
+// Enter your choice : 4
