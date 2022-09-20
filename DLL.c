@@ -142,8 +142,8 @@ void deletion_end()
     }  
 }  
 
-void after_deletion(){  
-    struct node *ptr, *temp;  
+void deletionspecificnode(){  
+    struct node *ptr;  
     int val;
 
     printf("\n Enter the data after which the node is to be deleted : ");  
@@ -152,40 +152,12 @@ void after_deletion(){
     ptr = head;
 
     while(ptr -> data != val)ptr = ptr -> next;  
-    if(ptr -> next == NULL) printf("\n NOT Found!");  
-  
-    else if(ptr -> next -> next == NULL){  
-        ptr ->next = NULL;  
-    }  
+    if(ptr -> next == NULL) printf("\n NOT Found!");   
     else{   
-        temp = ptr -> next;  
-        ptr -> next = temp -> next;  
-        temp -> next -> prev = ptr;  
-        free(temp);  
+        ptr -> prev -> next = ptr -> next;  
+        ptr -> next -> prev = ptr -> prev;  
+        free(ptr);  
          
-    }     
-}  
-
-void before_deletion(){  
-    struct node *ptr, *temp;  
-    int val;
-
-    printf("\n Enter the data before which the node is to be deleted : ");  
-    scanf("%d", &val); 
-
-    ptr = head;
-
-    while(ptr -> data != val)ptr = ptr -> next;  
-    if(ptr -> prev == NULL) printf("\n No node before it");  
-
-    else if(ptr -> prev -> prev == NULL){  
-        ptr -> prev = NULL;  
-    }  
-    else{   
-        temp = ptr -> prev;  
-        ptr -> prev = temp -> prev;  
-        temp -> prev -> next = ptr;  
-        free(temp);    
     }     
 }  
 
