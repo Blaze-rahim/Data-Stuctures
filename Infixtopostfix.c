@@ -32,7 +32,7 @@ int priority(char x){
 
 int main(){
     char x;
-    char input[] = "A-B+C*((D(E+F)-G^H)+I*J/L)M*P^Q";
+    char input[] = "A*B-D+(G*(H/I)/J+K";
     int i;
     for(i = 0; i<strlen(input);i++){
         if(isalpha(input[i])) printf("%c", input[i]); //isalpha is inbuilt funtion to check weather a char is alphabet or not.

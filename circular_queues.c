@@ -10,23 +10,13 @@ void insert(){
         front = rear = 0;
     else if (rear == -1 && front != 0)
         rear = 0;
-    else{
+    else {
         printf("Enter : ");
         scanf("%d", &val);
         rear += 1;
-        cqueue[rear] = val;
-    }
-}
-
-void deletion(){
-    if (front == -1){
-        printf("Underflow\n");
-        return;
-    }
-    printf("Element deleted is : %d\n", cqueue[front]);
-    if (front == rear)
+        cqueue[rear] = val; 
         front = rear = -1;
-    else{
+        
         if (front == max - 1)
             front = 0;
         else
@@ -84,6 +74,7 @@ int main(){
             display();
             break;
         case 4:
+            printf("Exiting");
             break;
         default:
             printf("Wrong choicen");

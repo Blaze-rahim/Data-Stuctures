@@ -1,5 +1,4 @@
 #include<stdio.h>
-
 #include<stdlib.h>
 
 struct node{
@@ -14,18 +13,22 @@ void startinsert(){
 	int var;
 
 	ptr = (struct node*) malloc(sizeof(struct node *));
-	if(ptr==NULL) printf("Overflow!");
  
-	else{
+	if(head == NULL){
 		printf("Enter value : ");
 		scanf("%D", &var );
 
 		ptr -> data = var;
-		ptr -> next = head;
 		head = ptr;
-		 
-	}
+	} 
+	else{
+		printf("Enter value : ");
+		scanf("%D", &var );
+		ptr -> next = head;
+		ptr -> data = var;
+		head = ptr;
 
+	}
 }
 
 void endinsert(){
@@ -113,7 +116,7 @@ void beforeinsert(){
 	}
 }
 
-
+/*
 void locationinsert(){ //THIS ISNT IN syllabus!
 	int i, location, num;
 	struct node *ptr, *temp;
@@ -143,6 +146,7 @@ void locationinsert(){ //THIS ISNT IN syllabus!
 
 	}
 }
+*/
 
 void begindelete(){
 	struct node *ptr;
@@ -174,6 +178,28 @@ void enddelete(){
 		free(ptr);
 	}
 }
+
+void specificnodedelte(){
+	struct node *ptr, *temp;
+	int num;
+
+	printf("Before which val u wanna delete");
+	scanf("%d", &num);
+
+	if (head == NULL) printf("Underflow");
+	
+	else{
+		ptr = head;
+		while(ptr -> data != num){
+			temp = ptr;
+			ptr = ptr->next;
+		}
+		temp -> next = ptr -> next;
+		free(ptr);
+	}
+
+}
+
 
 void display(){
 	struct node *ptr;
