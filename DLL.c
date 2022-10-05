@@ -173,6 +173,47 @@ void display()  {
 }   
 
 int main(){
-    //DO WHAT U WANT :)
+    int choice = 0;
+    while(choice != 6){  
+        printf("\n1.insertion at begin\n2.End Insert\n3.after insertion\n4.Location Insert\n5.Display\n6.deletion at begin\n7.deletion at end\n8. deletionspecificnode");  
+        printf("\n Enter your choice \n");        
+        scanf("%d",&choice);  
+        switch(choice){  
+            case 1:     
+                insertion_begin();  
+                break;  
+            
+            case 2:    
+                insertion_end();  
+                break;  
+
+			case 3:
+				after_insertion();
+				break;
+            
+            case 4:    
+                before_insertion();  
+                break;  
+
+            case 5:     
+                display();  
+                break;   
+              
+			case 6:
+				deletion_begin();
+                break;
+			
+            case 7:
+                deletion_end();
+                break;
+
+            case 8:
+                deletionspecificnode();
+                break;
+            default:    
+                printf("Please Enter valid choice ");  
+            
+        }
+    }  
     return 0;
 }
