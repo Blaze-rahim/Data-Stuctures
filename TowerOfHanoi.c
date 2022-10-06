@@ -1,3 +1,4 @@
+// DS Exp 1
 #include<stdio.h>
 void toh(int disc, int a, int b, int c){
     if(disc>0){
