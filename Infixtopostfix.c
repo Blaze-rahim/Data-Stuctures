@@ -32,7 +32,9 @@ int priority(char x){
 
 int main(){
     char x;
-    char input[] = "A*B-D+(G*(H/I)/J+K";
+    char input[100];
+    printf("Enter your Postfix exp");
+    gets(input);
     int i;
     for(i = 0; i<strlen(input);i++){
         if(isalpha(input[i])) printf("%c", input[i]); //isalpha is inbuilt funtion to check weather a char is alphabet or not.
@@ -55,4 +57,5 @@ int main(){
 // Output
 // PS C:\Users\AbdulRahim\Desktop\Data-Stuctures> gcc .\Infixtopostfix.c
 // PS C:\Users\AbdulRahim\Desktop\Data-Stuctures> .\a.exe
-// AB-CDEF+ G-H^ IJ*L/ + M*P*+Q^
+// Enter your Postfix expA+B-C/E
+// AB+CE/-

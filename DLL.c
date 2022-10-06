@@ -6,7 +6,7 @@ struct node  {
     int data;  
 };  
 
-struct node *head;  
+struct node *head ;  
 
 void insertion_begin()  {  
    struct node *ptr;   
@@ -65,44 +65,80 @@ void insertion_end(){
 
 void after_insertion(){  
     struct node *ptr, *temp;  
-    int val;
+    int val, a;
 
-    printf("\n Enter the data after which the node is to be Inserted : ");  
-    scanf("%d", &val); 
+    ptr = (struct node*) malloc (sizeof(struct node));
+    if (ptr == NULL) printf("Overflow");
 
-    ptr = head;
-
-    while(temp -> data != val)temp = temp -> next;  
-    if(temp -> next == NULL) printf("\n NOT Found");  
-    else{   
+    else{
+        printf("\n Enter the data : ");  
+        scanf("%d", &val); 
         ptr -> data = val;
-        ptr -> prev = temp;
-        temp -> next -> prev = ptr;
-        temp -> next = ptr;  
-        free(temp);  
-         
-    }     
+        if(head == NULL){  
+            ptr -> next = NULL;  
+            ptr -> prev = NULL;  
+            head = ptr;  
+        } 
+
+        else{
+            
+            temp = head;
+
+            printf("\n Enter the data after which the node is to be Inserted : ");
+            scanf("%d", &a); 
+            while(temp -> data != a && temp != NULL)temp = temp -> next;  
+            if(temp  == NULL) printf("Not found");
+            
+            else{
+                
+
+                ptr -> prev = temp;
+                ptr -> next = temp -> next;
+                temp -> next -> prev = ptr;
+                temp -> next = ptr;  
+                
+            }    
+        } 
+    }
 }  
 
 void before_insertion(){  
     struct node *ptr, *temp;  
-    int val;
+    int val, a;
 
-    printf("\n Enter the data befores which the node is to be Inserted : ");  
-    scanf("%d", &val); 
+    ptr = (struct node*) malloc (sizeof(struct node));
+    if (ptr == NULL) printf("Overflow");
 
-    ptr = head;
-
-    while(temp -> data != val)temp = temp -> next;  
-    if(temp -> next == NULL) printf("\n NOT Found");  
-    else{   
+    else{
+        printf("\n Enter the data : ");  
+        scanf("%d", &val); 
         ptr -> data = val;
-        ptr -> next = temp;
-        temp -> prev -> next = ptr;
-        temp -> prev = ptr;  
-        free(temp);  
-         
-    }     
+        if(head == NULL){  
+            ptr -> next = NULL;  
+            ptr -> prev = NULL;  
+            head = ptr;  
+        } 
+
+        else{
+            
+            temp = head;
+
+            printf("\n Enter the data after which the node is to be Inserted : ");
+            scanf("%d", &a); 
+            while(temp -> data != a && temp != NULL)temp = temp -> next;  
+            if(temp  == NULL) printf("Not found");
+            
+            else{
+                
+
+                ptr -> next = temp;
+                ptr -> prev = temp -> prev;
+                temp -> prev -> next = ptr;
+                temp -> prev = ptr;  
+                
+            }    
+        } 
+    }
 }  
 
 
@@ -175,7 +211,7 @@ void display()  {
 int main(){
     int choice = 0;
     while(choice != 6){  
-        printf("\n1.insertion at begin\n2.End Insert\n3.after insertion\n4.Location Insert\n5.Display\n6.deletion at begin\n7.deletion at end\n8. deletionspecificnode");  
+        printf("\n1.insertion at begin\n2.End Insert\n3.After insertion\n4.Before Insert\n5.Display\n6.Deletion at begin\n7.Deletion at end\n8.Deletion a Specific node");  
         printf("\n Enter your choice \n");        
         scanf("%d",&choice);  
         switch(choice){  
