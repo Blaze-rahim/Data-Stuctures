@@ -210,10 +210,13 @@ void display()  {
 
 int main(){
     int choice = 0;
-    while(choice != 6){  
-        printf("\n1.insertion at begin\n2.End Insert\n3.After insertion\n4.Before Insert\n5.Display\n6.Deletion at begin\n7.Deletion at end\n8.Deletion a Specific node");  
+   
+    while(choice != 9){  
+        printf("\n1.insertion at begin\n2.End Insert\n3.After insertion\n4.Before Insert\n5.Display\n6.Deletion at begin\n7.Deletion at end\n8.Deletion a Specific node \n9. Exit");  
+       
         printf("\n Enter your choice \n");        
         scanf("%d",&choice);  
+        
         switch(choice){  
             case 1:     
                 insertion_begin();  
@@ -246,6 +249,11 @@ int main(){
             case 8:
                 deletionspecificnode();
                 break;
+
+            case 9:
+                printf("Exiting...");
+                return 0;
+            
             default:    
                 printf("Please Enter valid choice ");  
             
