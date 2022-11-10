@@ -10,8 +10,11 @@ struct Vertex {
 };
 
 
-int stack[MAX]; 
-int top = -1; 
+int queue[MAX];
+int rear = -1;
+int front = 0;
+int queueItemCount = 0;
+
 
 struct Vertex* lstVertices[MAX];
 
@@ -20,20 +23,18 @@ int adjMatrix[MAX][MAX];
 int vertexCount = 0;
 
 
-void push(int item) { 
-   stack[++top] = item; 
-} 
-
-int pop() { 
-   return stack[top--]; 
-} 
-
-int peek() {
-   return stack[top];
+void insert(int data) {
+   queue[++rear] = data;
+   queueItemCount++;
 }
 
-bool isStackEmpty() {
-   return top == -1;
+int removeData() {
+   queueItemCount--;
+   return queue[front++]; 
+}
+
+bool isQueueEmpty() {
+   return queueItemCount == 0;
 }
 
 void addVertex(char label) {
@@ -54,66 +55,69 @@ void displayVertex(int vertexIndex) {
 
 int getAdjUnvisitedVertex(int vertexIndex) {
    int i;
-
-   for(i = 0; i < vertexCount; i++) {
-      if(adjMatrix[vertexIndex][i] == 1 && lstVertices[i]->visited == false) {
+	
+   for(i = 0; i<vertexCount; i++) {
+      if(adjMatrix[vertexIndex][i] == 1 && lstVertices[i]->visited == false)
          return i;
-      }
    }
-
+	
    return -1;
 }
 
-void depthFirstSearch() {
+void breadthFirstSearch() {
    int i;
 
    lstVertices[0]->visited = true;
 
-
    displayVertex(0);   
 
-   push(0);
+   insert(0);
+   int unvisitedVertex;
 
-   while(!isStackEmpty()) {
-      int unvisitedVertex = getAdjUnvisitedVertex(peek());
+   while(!isQueueEmpty()) {
+      int tempVertex = removeData();   
 
-      if(unvisitedVertex == -1) {
-         pop();
-      } else {
+      while((unvisitedVertex = getAdjUnvisitedVertex(tempVertex)) != -1) {    
          lstVertices[unvisitedVertex]->visited = true;
          displayVertex(unvisitedVertex);
-         push(unvisitedVertex);
+         insert(unvisitedVertex);               
       }
-   }
-     
-   for(i = 0;i < vertexCount;i++) {
+		
+   }   
+      
+   for(i = 0;i<vertexCount;i++) {
       lstVertices[i]->visited = false;
-   }        
+   }    
 }
 
 int main() {
    int i, j;
 
-   for(i = 0; i < MAX; i++)   
+   for(i = 0; i<MAX; i++)
    {
-      for(j = 0; j < MAX; j++) 
+      for(j = 0; j<MAX; j++) 
          adjMatrix[i][j] = 0;
    }
 
-    addVertex('S'); 
-    addVertex('A'); 
-    addVertex('B'); 
-    addVertex('C'); 
-    addVertex('D');
-    adEdge(0, 1);    
-    addEdge(0, 2);    
-    addEdge(0, 3);    
-    addEdge(1, 4);    
-    addEdge(2, 4);    
-    addEdge(3, 4);    
+   addVertex('A');   
+   addVertex('B');   
+   addVertex('C');   
+   addVertex('D');   
+   addVertex('E');   
+ 
+   addEdge(0, 1);    
+   addEdge(0, 2);    
+   addEdge(0, 3);    
+   addEdge(1, 3);    
+   addEdge(2, 4);    
+   addEdge(3, 4);    
 
-   printf("Depth First Search: ");
-   depthFirstSearch(); 
+   displayVertex(1);
+	
+   printf("\nBreadth First Search: ");
+   
+   breadthFirstSearch();
 
    return 0;
+
 }
