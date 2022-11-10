@@ -91,6 +91,16 @@ void depthFirstSearch() {
    }        
 }
 
+void printadjmat(){
+   printf("\n");
+   for (int i = 0; i< MAX; i++){
+      for(int j = 0; j<MAX; j++){
+         printf("%d  ",adjMatrix[i][j]);
+      }
+      printf("\n");
+   }
+}
+
 int main() {
    int i, j;
 
@@ -109,11 +119,11 @@ int main() {
     addEdge(0, 2);    
     addEdge(0, 3);    
     addEdge(1, 4);    
-    addEdge(2, 4);    
+    addEdge(2, 3);    
     addEdge(3, 4);    
 
    printf("Depth First Search: ");
    depthFirstSearch(); 
-
+   printadjmat();
    return 0;
 }
