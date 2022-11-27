@@ -24,7 +24,7 @@ void startinsert(){
 	else{
 		printf("Enter value : ");
 		scanf("%D", &var );
-		ptr -> next = head;
+		ptr -> next = NULL;
 		ptr -> data = var;
 		head = ptr;
 
@@ -116,7 +116,7 @@ void beforeinsert(){
 	}
 }
 
-/*
+
 void locationinsert(){ //THIS ISNT IN syllabus!
 	int i, location, num;
 	struct node *ptr, *temp;
@@ -146,7 +146,6 @@ void locationinsert(){ //THIS ISNT IN syllabus!
 
 	}
 }
-*/
 
 void begindelete(){
 	struct node *ptr;
