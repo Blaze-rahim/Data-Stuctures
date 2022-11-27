@@ -17,14 +17,14 @@ void startinsert(){
 	if(head == NULL){
 		printf("Enter value : ");
 		scanf("%D", &var );
-
+		ptr -> next = NULL;
 		ptr -> data = var;
 		head = ptr;
 	} 
 	else{
 		printf("Enter value : ");
-		scanf("%D", &var );
-		ptr -> next = NULL;
+		scanf("%d", &var );
+		ptr -> next = head;
 		ptr -> data = var;
 		head = ptr;
 
